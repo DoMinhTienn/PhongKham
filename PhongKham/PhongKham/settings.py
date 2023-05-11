@@ -52,6 +52,16 @@ OAUTH2_PROVIDER = {
     'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore',
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
+
+OAUTH2_INFO = {
+    "client_id": "oN0wdgrwsMnmbUnUUraHaiT8xnijQehGztOw7qnT",
+    "client_secret": "zlHBQ8lvc9s7RoojQvWCOr8rjKB96OlvM4kp0vhC10QfBOf1wn72iW4AHyOb3pOVdrYZVqaRDrrt0sTnGCHAoXpVxl12QczFB558Br91nVRBcTobHYARMLjHL4ucF4rx",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

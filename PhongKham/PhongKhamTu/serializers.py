@@ -26,3 +26,18 @@ class UserSerializer(serializers.ModelSerializer):
                 'write_only': True
             }
         }
+
+    def create(self, validated_data):
+        data = validated_data.copy()
+        user = User(**data)
+        user.set_password(user.password)
+        user.save()
+
+        return user
+
+class DangKySerializer(serializers.ModelSerializer):
+    ngay_kham = serializers.DateTimeField()
+    class Meta:
+        model = DangKy
+        fields =  ['id', 'ho_bennhan', 'ten_benhnhan',
+                  'email', 'phone', 'gioitinh', 'ngay_kham']

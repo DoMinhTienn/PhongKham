@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.conf import settings
 from .models import *
-from .serializers import UserSerializer
+from .serializers import UserSerializer, DangKySerializer
 
 class AuthInfo(APIView):
 
@@ -29,3 +29,21 @@ class UserViewSet(viewsets.ViewSet, generics.CreateAPIView):
     def current_user(self, request):
         return Response(self.serializer_class(request.user, context={'request': request}).data,
                         status=status.HTTP_200_OK)
+
+
+class DangKyViewSet(viewsets.ViewSet, generics.CreateAPIView):
+    queryset = DangKy.objects.all()
+    serializer_class = DangKySerializer
+    parser_classes = [MultiPartParser, ]
+    def dangky(self, request, format=None):
+        serializer = DangKySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+    def list(self, request):
+        # GET method
+        dangky_list = DangKy.objects.all()
+        serializer = DangKySerializer(dangky_list, many=True)
+        return Response(serializer.data)

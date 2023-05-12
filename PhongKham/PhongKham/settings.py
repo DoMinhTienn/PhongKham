@@ -59,8 +59,8 @@ REST_FRAMEWORK = {
 }
 
 OAUTH2_INFO = {
-    "client_id": "oN0wdgrwsMnmbUnUUraHaiT8xnijQehGztOw7qnT",
-    "client_secret": "zlHBQ8lvc9s7RoojQvWCOr8rjKB96OlvM4kp0vhC10QfBOf1wn72iW4AHyOb3pOVdrYZVqaRDrrt0sTnGCHAoXpVxl12QczFB558Br91nVRBcTobHYARMLjHL4ucF4rx",
+    "client_id": "oKAUKEXKxYUtFiHPma60B3jLvdxZGwISLeOjkgTb",
+    "client_secret": "SsjI4PE0dg4ywXvtCoDq6IyOUvPNiDP7AIQzDVfLP5YwuvOmzqVUQq9TLEjTzvTWKIdXgJkiZR0Dh0NoGH2dprscACk19G0QRIyPB7AYwxIYrRCMigYDbhGuDRIKSTyH",
 }
 
 MIDDLEWARE = [
@@ -102,7 +102,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pkdb',
         'USER': 'root',
-        'PASSWORD': '05022001',
+        'PASSWORD': 'password',
         'HOST': '' # mặc định localhost
     }
 }

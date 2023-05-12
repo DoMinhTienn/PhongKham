@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.conf import settings
 from .models import *
+import datetime
 from .serializers import UserSerializer, DangKySerializer
 
 class AuthInfo(APIView):
@@ -45,5 +46,11 @@ class DangKyViewSet(viewsets.ViewSet, generics.CreateAPIView):
     def list(self, request):
         # GET method
         dangky_list = DangKy.objects.all()
+
+        q = self.request.query_params.get('date')
+        if q:
+            ngay = datetime.datetime.strptime(q, '%Y-%m-%d').date()
+            dangky_list = dangky_list.filter(ngay_kham__date=ngay)
+
         serializer = DangKySerializer(dangky_list, many=True)
         return Response(serializer.data)

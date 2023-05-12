@@ -46,3 +46,4 @@ class DangKy(BaseModel):
     phone = models.CharField(max_length=255, null=False)
     gioitinh =  models.CharField(max_length=10 , choices=[(type.value, type.name) for type in SexType], default=SexType.NAM.value)
     ngay_kham = models.DateTimeField(auto_now_add=True)
+
